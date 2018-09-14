@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ecobit_blockchain" type="ecobit_blockchainType"/>
+  <xs:complexType name="transactionType">
+    <xs:all>
+      <xs:element type="xs:string" name="batch_id" />
+      <xs:element type="xs:string" name="quantity"/>
+      <xs:element type="xs:string" name="item_price"/>
+      <xs:element type="xs:string" name="order_time"/>
+      <xs:element type="xs:string" name="from_owner"/>
+      <xs:element type="xs:string" name="to_owner"/>
+      <xs:element type="transportType" name="transport" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="ecobit_blockchainType">
+    <xs:sequence>
+      <xs:element type="transactionType" name="transaction" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="transport_updateType" name="transport_update" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="transport_updateType">
+    <xs:all>
+      <xs:element type="xs:string" name="transaction_id"/>
+      <xs:element type="transportType" name="transport"/>
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="transportType">
+    <xs:all>
+      <xs:element type="xs:string" name="transporter" minOccurs="0"/>
+      <xs:element type="xs:string" name="pickup_date" minOccurs="0"/>
+      <xs:element type="xs:string" name="deliver_date" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,34 @@
+@{
+	ViewBag.Title = "Login";
+}
+
+@model Ecobit_Blockchain_Frontend.Models.Login
+<div class="form-page">
+	<div id="logo-container" style="display: flex; align-items: center; justify-content: center;">
+		<img src="~/logo_ecobit.png" alt="Sample Photo" style="max-width: 15%; margin-top: 5%" />			
+	</div>
+	
+	@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+	{
+		@Html.AntiForgeryToken()
+		<div class="form-group has-error label-warning">
+			<p>@Html.ValidationMessage("LoginError")</p>
+		</div>
+
+		<div class="form-group">
+			<label>@Html.LabelFor(m => m.Username)</label>
+			@Html.TextBoxFor(m => m.Username, new {@class = "form-control"})
+			<div class="has-error">
+				<p>@Html.ValidationMessageFor(m => m.Username)</p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label>@Html.LabelFor(m => m.Password)</label>
+			@Html.PasswordFor(m => m.Password, new {@class = "form-control"})
+			<div class="has-error">
+				<p>@Html.ValidationMessageFor(m => m.Password)</p>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-success">Log in</button>
+	}
+</div>

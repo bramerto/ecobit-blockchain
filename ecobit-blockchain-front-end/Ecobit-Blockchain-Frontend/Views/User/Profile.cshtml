@@ -1,0 +1,41 @@
+﻿@{
+	ViewBag.Title = "Profiel";
+}
+@model Ecobit_Blockchain_Frontend.Models.User
+<div class="row">
+	<div class="col-8">
+		<h1>Profiel</h1>
+	</div>
+	<div class="col-1">
+		<a href="@Url.Action("Update", "User")/@Model.Companyname">
+			<button class="btn btn-warning btn-block">
+				<i class="fa fa-fw fa-user-edit"></i>
+			</button>
+		</a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-4">
+		@Html.HiddenFor(m => Model.Id)
+
+		<label for="email"><b>Email: </b></label>
+		<p id="email">@Model.Email</p>
+
+		<label for="password"><b>Wachtwoord: </b></label>
+		@Html.TextBoxFor(m => m.Password, new
+		{
+			@class = "form-control col-12", 
+			Type = "password", 
+			id = "password", 
+			disabled = "true"
+		})
+		<hr>
+
+		<label for="companyname"><b>Bedrijfsnaam: </b></label>
+		<p id="companyname">@Model.Companyname</p>
+
+		<label for="contact"><b>Contact: </b></label>
+		<p id="contact">@Model.Contact</p>
+	</div>
+</div>

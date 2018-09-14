@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Transactie";
+}
+
+@model Ecobit_Blockchain_Frontend.Models.Batch
+<div class="col-2">
+    <a href="@Url.Action("Create", "Batch")">
+        <button class="btn btn-success btn-block">
+            <i class="fa fa-fw fa-plus-square"></i>
+            Partij toevoegen
+        </button>
+    </a>
+</div>
+<div class="form-page" style="margin-top: 10%">
+    <div class="row">
+        @using (Html.BeginForm("Index", "Batch", FormMethod.Post, new {style = "width: 100%;", @class = "Batch"}))
+        {
+            <div class="form-group" style="text-align: center;">
+                <label>
+                    @Html.LabelFor(m => m.BatchId)
+                </label>
+                @Html.TextBoxFor(m => m.BatchId, new {style = "width: 100%; margin-left:30%; margin-right: 30%; max-width:40%;", @class = "form-control"})
+                <div class="has-error">
+                    <p>@Html.ValidationMessageFor(m => m.BatchId)</p>
+                </div>
+            </div>
+            <div style="width: 100%; margin-left: 35%">
+                <button type="submit" class="btn btn-primary" style="width: 15%">Toon transactiehistorie</button>
+                <a class="btn btn-primary" href="@Url.Action("UserHistory", "Batch")" style="width: 15%">Toon mijn transacties</a>
+            </div>
+        }
+    </div>
+</div>

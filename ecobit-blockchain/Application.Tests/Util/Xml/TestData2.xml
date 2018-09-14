@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ecobit_blockchain>
+    <transport_update>
+        <transaction_id>a66ee9cc-02c4-4769-989d-5f07b8963c0d</transaction_id>
+        <transport>
+            <transporter>Transporteur2</transporter>
+            <pickup_date>2018-05-23T15:00:00</pickup_date>
+        </transport>
+    </transport_update>
+    <transport_update>
+        <transaction_id>1a8c53ac-dd29-42d2-8622-17cbb5e7b823</transaction_id>
+        <transport>
+            <deliver_date>2018-05-24T16:00:00</deliver_date>
+        </transport>
+    </transport_update>
+</ecobit_blockchain>

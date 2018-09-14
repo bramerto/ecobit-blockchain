@@ -1,0 +1,10 @@
+﻿@{
+	ViewBag.Title = "500 Internal Server error";
+}
+
+@model Exception
+
+<div>
+	<h2>Een fout is opgetreden. Contacteer administrators van Ecobit en geef deze informatie mee: </h2>
+	<p>@Model.ToString()</p>
+</div>

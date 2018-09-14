@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Gebruikers Transactiehistorie";
+}
+@model Ecobit_Blockchain_Frontend.Models.UserHistory
+
+<h1>Gebruikers Transactiehistorie</h1>
+<h3>Gebruiker: @Model.User</h3>
+
+<div class="row">
+    @if (Model.Transactions.Count > 0)
+    {
+         foreach (var transaction in Model.Transactions)
+         {
+             <div class="col-sm-12 col-md-4">
+                 <div class="card bg-light mb-3">
+                     <div class="card-body">
+                         <ul class="list-unstyled m-0">
+                             <li>BatchId: <span class="float-right">@transaction.BatchId</span></li>
+                             <li>Hoeveelheid: <span class="float-right">@transaction.Quantity</span></li>
+                             <li>Prijs: <span class="float-right">@transaction.ItemPrice</span></li>
+                             <li>Datum: <span class="float-right">@transaction.OrderTime</span></li>
+                             <li>Van: <span class="float-right">@transaction.FromOwner</span></li>
+                             <li>Naar: <span class="float-right">@transaction.ToOwner</span></li>
+                         </ul>
+    
+                         @if (transaction.Transport != null)
+                         {
+                             var t = transaction.Transport;
+                             <label class="mt-3">Transport gegevens:</label>
+                             <div class="card">
+                                 <div class="card-body py-2">
+                                     <ul class="list-unstyled m-0">
+                                     <li>Transporteur: <span class="float-right">@t.Transporter</span></li>
+                                     <li>Ophaaldatum: <span class="float-right">@(t.PickupDate != DateTime.MinValue ? t.PickupDate.ToString() : "(niet bekend)")</span></li>
+                                     <li>Afleverdatum: <span class="float-right">@(t.DeliverDate != DateTime.MinValue ? t.DeliverDate.ToString() : "(niet bekend)")</span></li>
+                                     </ul>
+                                 </div>
+                             </div>
+                         }
+                     </div>
+                 </div>
+             </div>
+        }
+    }
+    else
+    {
+        <div class="col-12 col-sm-12 col-md-3">
+            <div class="alert alert-danger" role="alert">
+                Geen transactiehistorie gevonden voor deze partij
+            </div>
+        </div>
+    }
+</div>

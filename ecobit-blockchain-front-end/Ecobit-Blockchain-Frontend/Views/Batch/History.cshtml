@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "Transactiehistorie";
+}
+@using Ecobit_Blockchain_Frontend.Models;
+@using Ecobit_Blockchain_Frontend.Utils
+
+@model Ecobit_Blockchain_Frontend.Models.View.HistoryView
+
+<h1>Transactiehistorie</h1>
+<h3>Partij @Model.BatchId</h3>
+
+<div class="row">
+    @if (Model.SupplyChain != null)
+    {
+        <div class="transaction first">
+        @PrintSupplyChain(Model.SupplyChain, true)
+        </div>
+    }
+    else
+    {
+        <div class="col-12 col-sm-12 col-md-3">
+            <div class="alert alert-danger" role="alert">
+                Geen transactiehistorie gevonden voor deze partij
+            </div>
+        </div>
+    }
+</div>
+
+@helper PrintSupplyChain(SupplyChain chain, bool initial)
+{
+
+    <div class="complete-transaction childs-@chain.Children.Count">
+        
+        @if (!initial)
+        {
+            <div class="tree-branch"></div>
+        }
+        
+        <div class="card bg-light" style="display: block;">
+            <div class="card-body">
+                <ul class="list-unstyled m-0">
+                    <li><b>BatchId:</b> <span class="float-right">@chain.Transaction.BatchId</span></li>
+                    <li><b>Hoeveelheid:</b> <span class="float-right">@chain.Transaction.Quantity</span></li>
+                    <li><b>Prijs:</b> <span class="float-right">@chain.Transaction.ItemPrice</span></li>
+                    <li><b>Datum:</b> <span class="float-right">@chain.Transaction.OrderTime</span></li>
+                    <li><b>Van:</b> <span class="float-right">@chain.Transaction.FromOwner</span></li>
+                    <li><b>Naar:</b> <span class="float-right">@chain.Transaction.ToOwner</span></li>
+                </ul>
+
+                @if (@chain.Transaction.Transport.PickupDate != DateTimeUtil.ConvertToDate(0))
+                {
+                    var t = @chain.Transaction.Transport;
+                   
+                    <div class="label-success mt-2">Transport voltooid</div>
+                    <div class="card">
+                        <div class="card-body py-2">
+                            <ul class="list-unstyled m-0">
+                                <li>Transporteur: <span class="float-right">@t.Transporter</span></li>
+                                <li>Ophaaldatum: <span class="float-right">@(t.PickupDate != DateTimeUtil.ConvertToDate(0) ? t.PickupDate.ToString() : "(niet bekend)")</span></li>
+                                <li>Afleverdatum: <span class="float-right">@(t.DeliverDate != DateTimeUtil.ConvertToDate(0) ? t.DeliverDate.ToString() : "(niet bekend)")</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="label-warning mt-2">In transport</div>
+                }
+            </div>
+        </div>
+
+        <div class="transaction">
+            @foreach (var child in chain.Children)
+            {
+                @PrintSupplyChain(child, false)
+            }
+        </div>
+    </div>
+}
+

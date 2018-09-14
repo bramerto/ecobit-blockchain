@@ -1,0 +1,58 @@
+﻿@{
+	ViewBag.Title = "Gebruiker wijzigen";
+}
+@model Ecobit_Blockchain_Frontend.Models.User
+<div class="col-12">
+	<h1>Wijzig @Model.Companyname</h1>
+</div>
+
+@using (Html.BeginForm("Update", "User", FormMethod.Post))
+{
+	@Html.AntiForgeryToken()
+	<div class="form-check-inline col-12">
+		<div>
+			@Html.HiddenFor(m => Model.Id)
+		</div>
+		<div class="col-6">
+			<label>@Html.LabelFor(m => Model.Email)</label>
+			@Html.TextBoxFor(m => m.Email, new {@class = "form-control col-12"})
+			<div class="has-error">
+				<p>@Html.ValidationMessageFor(m => m.Email)</p>
+			</div>
+		</div>
+		<div class="col-6">
+			<label>@Html.LabelFor(m => m.Password)</label>
+			@Html.TextBoxFor(m => m.Password, new {@class = "form-control col-12", Type = "password"})
+			<div class="has-error">
+				<p>@Html.ValidationMessageFor(m => m.Password)</p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-check-inline col-12">
+		<div class="col-6">
+			<label>@Html.LabelFor(m => m.Companyname)</label>
+			@Html.TextBoxFor(m => m.Companyname, new {@class = "form-control col-12"})
+			<div class="has-error">
+				<p>@Html.ValidationMessageFor(m => m.Companyname)</p>
+			</div>
+		</div>
+		<div class="col-6">
+			<label>@Html.LabelFor(m => m.Contact)</label>
+			@Html.TextBoxFor(m => m.Contact, new {@class = "form-control col-12"})
+			<div class="has-error">
+				<p>@Html.ValidationMessageFor(m => m.Contact)</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-check col-12">
+		<div class="col-12">
+			<div class="form-group has-error">
+				<p>@Html.ValidationMessage("InvalidEditUser")</p>
+			</div>
+			<button type="submit" class="btn btn-success">Wijzig</button>
+		</div>
+	</div>
+}
+

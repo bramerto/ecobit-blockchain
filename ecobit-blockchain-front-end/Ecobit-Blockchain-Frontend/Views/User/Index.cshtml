@@ -1,0 +1,72 @@
+﻿@{
+	ViewBag.Title = "Gebruikersoverzicht";
+}
+@model dynamic
+
+<div class="row">
+	<div class="col-12">
+		<div class="form-group">
+			<div class="input-group col-12">
+				<input type="text" name="input" id="input" class="form-control col-11" autocomplete="off">
+				<div class="col-1">
+					<a href="@Url.Action("Create", "User")" class="btn btn-success btn-block">
+						<i class="fa fa-fw fa-user-plus"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row" style="margin-top: 10px">
+	<div class="col-12">
+		<div class="form-group">
+			<div class="input-group col-12" style="justify-content: center">
+				<div class="col-2">
+					<a href="@Url.Action("Profile", "User")" id="profileLink">
+						<button class="btn btn-primary btn-block" id="profile">
+							<i class="fa fa-fw fa-address-book"></i>
+						</button>
+					</a>
+				</div>
+				<div class="col-2">
+					<a href="@Url.Action("Update", "User")" id="updateLink">
+						<button class="btn btn-warning btn-block" id="update">
+							<i class="fa fa-fw fa-user-edit"></i>
+						</button>
+					</a>
+				</div>
+				<div class="col-1">
+					<a href="@Url.Action("Delete", "User")" id="deleteLink" onclick="return confirm('Weet je zeker dat je deze gebruiker wilt verwijderen?')">
+						<button class="btn btn-danger btn-block" id="delete">
+							<i class="fa fa-fw fa-trash"></i>
+						</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		var input = $("#input");
+
+		checkIfEmpty(input.val());
+
+		input.on("keyup", function (e) {
+			e.preventDefault();
+			
+			var value = $("#input").val();
+
+			checkIfEmpty(value);
+
+			$("#profileLink").attr("href", "User/Profile/" + value);
+			$("#updateLink").attr("href", "User/Update/" + value);
+			$("#deleteLink").attr("href", "User/Delete/" + value);
+		});
+		
+		function checkIfEmpty(value) {
+			$("#profile, #update, #delete").prop("disabled", value === "");
+		}
+	});
+</script>

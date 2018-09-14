@@ -1,0 +1,73 @@
+﻿@{
+	ViewBag.Title = "Nieuwe Transactie";
+}
+
+@model Ecobit_Blockchain_Frontend.Models.Transaction
+<div class="col-12">
+	<h1>Nieuwe partij</h1>
+</div>
+
+@using (Html.BeginForm("Create", "Batch", FormMethod.Post))
+{
+	@Html.AntiForgeryToken()
+		
+	<div class="form-check-inline col-12">
+		<div class="col-6">
+			<label>@Html.LabelFor(m => Model.BatchId)</label>
+			@Html.TextBoxFor(m => m.BatchId, new {@class = "form-control col-12"})
+			<div class="has-error">
+				<p>@Html.ValidationMessageFor(m => m.BatchId)</p>
+			</div>
+		</div>
+		<div class="col-6">
+			<label>@Html.LabelFor(m => m.Quantity)</label>
+			@Html.TextBoxFor(m => m.Quantity, new {@class = "form-control col-12"})
+			<div class="has-error">
+				<p>@Html.ValidationMessageFor(m => m.Quantity)</p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-check-inline col-12">
+		<div class="col-6">
+			<label>@Html.LabelFor(m => m.ItemPrice)</label>
+			@Html.TextBoxFor(m => m.ItemPrice, new {@class = "form-control col-12"})
+			<div class="has-error">
+				<p>@Html.ValidationMessageFor(m => m.ItemPrice)</p>
+			</div>
+		</div>
+		<div class="col-6">
+			<label>@Html.LabelFor(m => m.OrderTime)</label>
+			@Html.TextBoxFor(m => m.OrderTime, new {@class = "form-control col-12", Type = "date"})
+			<div class="has-error">
+				<p>@Html.ValidationMessageFor(m => m.OrderTime)</p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-check-inline col-12">
+		<div class="col-6">
+			<label>@Html.LabelFor(m => m.FromOwner)</label>
+			@Html.TextBoxFor(m => m.FromOwner, new {@class = "form-control col-12"})
+			<div class="has-error">
+				<p>@Html.ValidationMessageFor(m => m.FromOwner)</p>
+			</div>
+		</div>
+		<div class="col-6">
+			<label>@Html.LabelFor(m => m.ToOwner)</label>
+			@Html.TextBoxFor(m => m.ToOwner, new {@class = "form-control col-12"})
+			<div class="has-error">
+				<p>@Html.ValidationMessageFor(m => m.ToOwner)</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-check col-12">
+		<div class="col-12">
+			<div class="form-group has-error">
+				<p>@Html.ValidationMessage("InvalidCreateTransaction")</p>
+			</div>
+			<button type="submit" class="btn btn-success">Voeg toe</button>
+		</div>
+	</div>
+}

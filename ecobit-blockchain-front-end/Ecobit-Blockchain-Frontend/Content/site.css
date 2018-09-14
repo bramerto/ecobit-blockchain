@@ -1,0 +1,98 @@
+body {
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.form-page {
+    height: calc(100vh - 150px); /* set height to the screen height minus the footer and topbar */
+    position:relative;
+}
+
+.form-page > form {
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    min-width:280px;
+}
+
+.has-error {
+    color: red;
+}
+
+.input-group {
+    padding: 0 0 0 0 !important;
+}
+
+.transaction.first {
+    max-width:100%;
+}
+
+.card.bg-light {
+    border-radius:0px;
+    margin:0px 0px 0px 15px;
+    float:left;
+}
+
+.transaction {
+    float:left;
+}
+
+.container {
+    max-width:100% !important;
+}
+
+.complete-transaction {
+    border-left: solid gainsboro 2px;
+    overflow: auto;
+    height:100%;
+}
+
+.complete-transaction:not(.childs-0){
+    padding-bottom:20px;
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 0.8rem;
+    font-size: 14px;
+}
+
+.tree-branch {
+    width: 30px;
+    height: 2px;
+    background: gainsboro;
+    position: relative;
+    top: 20px;
+}
+
+.label-warning {
+    font-weight:bold;
+    color:orange;
+}
+
+.label-success {
+    font-weight:bold;
+    color:green;
+}

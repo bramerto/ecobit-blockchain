@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecobit-Blockchain-Frontend", "Ecobit-Blockchain-Frontend\Ecobit-Blockchain-Frontend.csproj", "{F9AF6E8C-6446-4588-A153-4CC5DD0C3554}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecobit-Blockchain-Frontend-Test", "Ecobit-Blockchain-Frontend-Test\Ecobit-Blockchain-Frontend-Test.csproj", "{1E134E02-CD8A-427E-BCC7-0DE075C36A83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F9AF6E8C-6446-4588-A153-4CC5DD0C3554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9AF6E8C-6446-4588-A153-4CC5DD0C3554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9AF6E8C-6446-4588-A153-4CC5DD0C3554}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9AF6E8C-6446-4588-A153-4CC5DD0C3554}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E134E02-CD8A-427E-BCC7-0DE075C36A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E134E02-CD8A-427E-BCC7-0DE075C36A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E134E02-CD8A-427E-BCC7-0DE075C36A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E134E02-CD8A-427E-BCC7-0DE075C36A83}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8DE7D956-2832-4400-9473-BDB8BE9C488F}
+	EndGlobalSection
+EndGlobal
